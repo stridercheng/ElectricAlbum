@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
+import android.util.Log;
 /**
  * description:
  * User: stridercheng
@@ -37,6 +37,7 @@ public class SlideToShowView extends FrameLayout {
     private Context context;
     private ScheduledExecutorService scheduledExecutorService;
     private boolean isAutoPlay = true;
+    private CooperationControlInterface cooperationControlInterface;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -69,9 +70,13 @@ public class SlideToShowView extends FrameLayout {
         }
     }
 
+    public void setCooperationControlInterface(CooperationControlInterface cooperationControlInterface) {
+        this.cooperationControlInterface = cooperationControlInterface;
+    }
+
     private void startPlay() {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        scheduledExecutorService.scheduleAtFixedRate(new SlideTask(), 20, 20, TimeUnit.SECONDS);
+        scheduledExecutorService.scheduleAtFixedRate(new SlideTask(), 10, 10, TimeUnit.SECONDS);
     }
 
     private void stopPlay() {
@@ -84,6 +89,9 @@ public class SlideToShowView extends FrameLayout {
         viewPager.setFocusable(true);
         viewPager.setAdapter(new MyPagerAdapter());
         viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
+        if (cooperationControlInterface != null) {
+            cooperationControlInterface.showText();
+        }
     }
 
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
@@ -94,7 +102,10 @@ public class SlideToShowView extends FrameLayout {
 
         @Override
         public void onPageSelected(int position) {
-
+            Log.e("SlideToShowView", "currentPosition=" + position);
+            if (cooperationControlInterface != null) {
+                cooperationControlInterface.showText();
+            }
         }
 
         @Override
@@ -175,7 +186,10 @@ public class SlideToShowView extends FrameLayout {
             container.addView(imageViewList.get(position));
             return imageViewList.get(position);
         }
-
-
     }
+
+    public interface CooperationControlInterface {
+        void showText();
+    }
+
 }

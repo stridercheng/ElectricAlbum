@@ -1,5 +1,6 @@
 package com.chengz.android.electricalbum;
 
+import android.animation.ValueAnimator;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,7 +19,10 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.util.Log;
-public class MainActivity extends AppCompatActivity {
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements SlideToShowView.CooperationControlInterface {
     private SlideToShowView slideToShowView;
     private int screenWidth, screenHeight;
     private float density;
@@ -32,14 +36,23 @@ public class MainActivity extends AppCompatActivity {
             mFlowerView.inva();
         }
     };
-
-
+    private TextView tv_sentence;
+    private float originX, originY;
+    private int[] tips = new int[]{
+            R.string.romantic_sentence1, R.string.romantic_sentence2,
+            R.string.romantic_sentence3, R.string.romantic_sentence4,
+            R.string.romantic_sentence5, R.string.romantic_sentence6,
+            R.string.romantic_sentence7, R.string.romantic_sentence8,
+            R.string.romantic_sentence9, R.string.romantic_sentence10
+    };
+    private int cursor = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFlowerView = (FlowerView) findViewById(R.id.flowerView);
         slideToShowView = (SlideToShowView) findViewById(R.id.slidetoshow);
+        tv_sentence = (TextView) findViewById(R.id.sentence);
         initData();
     }
 
@@ -66,6 +79,25 @@ public class MainActivity extends AppCompatActivity {
         myTimer.schedule(mTask, 3000, 10);
 
         new InitTask().execute();
+
+        //init tv params
+//        startTextAnimation();
+        slideToShowView.setCooperationControlInterface(this);
+    }
+
+    private void startTextAnimation() {
+        Log.e("MainActivity", "startTextAnimation--->");
+        if (cursor >= tips.length) {
+            cursor = 0;
+        }
+        tv_sentence.setText(getResources().getText(tips[cursor]));
+        tv_sentence.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_tranlate));
+        cursor ++;
+    }
+
+    @Override
+    public void showText() {
+        startTextAnimation();
     }
 
     class InitTask extends AsyncTask<Void, Void, Void> {
@@ -77,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            playMusic();
+//            playMusic();
             slideToShowView.initData();
         }
     }
