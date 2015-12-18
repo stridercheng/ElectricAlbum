@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements SlideToShowView.C
     private void copyResources() {
         try {
             UnzipAssets.unZip(this, "music.zip", MyApplication.MUSICPATH);
-            UnzipAssets.unZip(this, "pics.zip", MyApplication.PICTUREPATH);
+//            UnzipAssets.unZip(this, "pics.zip", MyApplication.PICTUREPATH);
             playMusic();
         } catch (IOException e) {
             e.printStackTrace();

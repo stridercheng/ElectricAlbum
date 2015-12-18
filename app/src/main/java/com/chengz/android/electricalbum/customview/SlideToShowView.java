@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.chengz.android.electricalbum.R;
+import com.chengz.android.electricalbum.anim.PagerTranslateFormer;
 import com.chengz.android.electricalbum.utils.FileUtils;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -91,6 +93,16 @@ public class SlideToShowView extends FrameLayout {
         viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
         if (cooperationControlInterface != null) {
             cooperationControlInterface.showText();
+        }
+        viewPager.setPageTransformer(true, new PagerTranslateFormer());
+        try {
+            Field mScroller = null;
+            mScroller = ViewPager.class.getDeclaredField("mScroller");
+            mScroller.setAccessible(true);
+            FixedSpeedScroller scroller = new FixedSpeedScroller(context);
+            mScroller.set(viewPager, scroller);
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

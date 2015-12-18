@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-
+import android.util.Log;
 /**
  * description:
  * User: stridercheng
@@ -27,6 +27,7 @@ public class FileUtils {
             imageViewList = new ArrayList<>();
 
             File file = new File(MyApplication.PICTUREPATH);
+            Log.e("FileUtils", "path =" + MyApplication.PICTUREPATH);
             File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
                 File tempFile = files[i];
@@ -36,6 +37,9 @@ public class FileUtils {
 
                     ImageView imageView = new ImageView(context);
                     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+
+
                     imageView.setImageBitmap(bitmap);
 
                     imageViewList.add(imageView);
