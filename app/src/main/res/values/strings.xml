@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">ElectricAlbum</string>
-    <string name="romantic_sentence1">执子之手，此生不渝</string>
-    <string name="romantic_sentence2">你是我最重要得决定\r\n遇到你便是浑然天成的交集</string>
-    <string name="romantic_sentence3">让我做你一辈子小小的骄傲</string>
-    <string name="romantic_sentence4">让我做你一辈子的大树\r\n为你遮风挡雨\r\n让你依靠</string>
-    <string name="romantic_sentence5">谢谢老天\r\n让我照顾你\r\n能够遇到你\r\n是上天对我最大的眷顾</string>
-    <string name="romantic_sentence6">你总像个淘气的孩子\r\n让人不省心</string>
-    <string name="romantic_sentence7">因为有你，我才相信爱</string>
-    <string name="romantic_sentence8">无论走到哪里r\n你都装到我心里</string>
-    <string name="romantic_sentence9">亲爱的\r\n这一次\r\n幸福不会溜走</string>
-    <string name="romantic_sentence10">现在\r\n永远\r\n你是我最爱的宝贝</string>
+    <string name="romantic_sentence1"><b>执子之手，此生不渝</b></string>
+    <string name="romantic_sentence2"><b>你是我最重要得决定\r\n遇到你便是浑然天成的交集</b></string>
+    <string name="romantic_sentence3"><b>让我做你一辈子小小的骄傲</b></string>
+    <string name="romantic_sentence4"><b>让我做你一辈子的大树\r\n为你遮风挡雨\r\n让你依靠</b></string>
+    <string name="romantic_sentence5"><b>谢谢老天\r\n让我照顾你\r\n能够遇到你\r\n是上天对我最大的眷顾</b></string>
+    <string name="romantic_sentence6"><b>你总像个淘气的孩子\r\n让人不省心</b></string>
+    <string name="romantic_sentence7"><b>因为有你，我才相信爱</b></string>
+    <string name="romantic_sentence8"><b>无论走到哪里r\n你都装到我心里</b></string>
+    <string name="romantic_sentence9"><b>亲爱的\r\n这一次\r\n幸福不会溜走</b></string>
+    <string name="romantic_sentence10"><b>现在\r\n永远\r\n你是我最爱的宝贝</b></string>
 
 </resources>

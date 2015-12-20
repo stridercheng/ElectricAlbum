@@ -94,7 +94,7 @@ public class SlideToShowView extends FrameLayout {
         if (cooperationControlInterface != null) {
             cooperationControlInterface.showText();
         }
-        viewPager.setPageTransformer(true, new PagerTranslateFormer());
+//        viewPager.setPageTransformer(true, new PagerTranslateFormer());
         try {
             Field mScroller = null;
             mScroller = ViewPager.class.getDeclaredField("mScroller");

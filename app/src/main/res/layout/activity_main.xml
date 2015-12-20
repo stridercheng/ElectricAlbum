@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <TextView
-        android:id="@+id/sentence"
+        android:id="@+id/upToDown"
         android:textSize="26sp"
         android:textColor="@color/lightred"
         android:background="@android:color/transparent"
@@ -20,4 +20,14 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <com.mattkula.secrettextview.SecretTextView
+        android:id="@+id/secretTextView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/black"
+        />
 </FrameLayout>
